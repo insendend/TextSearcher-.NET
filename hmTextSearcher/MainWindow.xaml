@@ -1,0 +1,189 @@
+﻿<Window x:Class="hmTextSearcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:hmTextSearcher"
+        mc:Ignorable="d"
+        Title="TextSearcher" Height="520" Width="770" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Name="tb_log" Grid.Row="1" Margin="5" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Header="Search folder">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="tb_path" Margin="0 0 10 0" TextChanged="tb_path_TextChanged"/>
+                        <Button Name="but_browseFolder" Width="70" Grid.Column="1" Click="but_browseFolder_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="16" Height="16" Source="Icons/Open Folder-26.png"/>
+                                <TextBlock>Browse...</TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="File mask ( ex:    *.txt;*.cs )" Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="tb_patterns" Margin="0 0 10 0"/>
+                        <CheckBox Name="cb_recursive" Grid.Column="1" Content="Recursive" IsChecked="True"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Header="Search text">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="tb_searchText" Margin="0 0 10 0" TextChanged="tb_searchText_TextChanged"/>
+                        <CheckBox Name="cb_matchCase" Grid.Column="1" Content="Match case"/>
+                        <StackPanel Name="sp_skipOption" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Collapsed">
+                            <TextBlock Text="Skip files with size more than"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Name="tb_skipSize" Margin="0 0 5 0" Width="70" Text="10"/>
+                                <TextBlock Text="MB"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="3" Margin="0 20 0 0" Header="Search tools">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Name="but_search" Margin="5" Click="but_search_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="24" Height="16" Source="Icons/Binoculars-26.png"/>
+                                <TextBlock>Search</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <ToggleButton Name="tbut_pause" Grid.Column="1" Margin="5" Click="tbut_pause_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="24" Height="16" Source="Icons/Pause-26.png"/>
+                                <TextBlock>Pause</TextBlock>
+                            </StackPanel>
+                        </ToggleButton>
+                        <Button Name="but_stop" Grid.Column="2" Margin="5" Click="but_stop_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="24" Height="16" Source="Icons/Stop-26.png"/>
+                                <TextBlock>Stop</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <TextBlock Name="tb_filesFound" Grid.Row="1" Grid.ColumnSpan="3" Foreground="Blue"/>
+                        <TextBlock Name="tb_statusSearch" Grid.Row="2" Grid.ColumnSpan="3" Foreground="Red"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Name="gp_choosenFiles" Grid.Row="4" Margin="0 20 0 0" Header="Choosen files">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Name="but_copy" Margin="5" Click="but_copy_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="24" Height="16" Source="Icons/Copy-26.png"/>
+                                <TextBlock>Copy To</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="but_move" Grid.Column="1" Margin="5" Click="but_copy_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="24" Height="16" Source="Icons/Import-26.png"/>
+                                <TextBlock>Move To</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="but_delete" Grid.Column="2" Margin="5" Click="but_copy_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="24" Height="16" Source="Icons/Delete-26.png"/>
+                                <TextBlock>Delete</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <TextBlock Name="tb_statusChoosenFiles" Margin="5" Grid.Row="1" Grid.ColumnSpan="3" Foreground="Blue"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <GroupBox Header="List of files">
+                    <ListBox Name="lb_files" SelectionMode="Multiple" SelectionChanged="lb_files_SelectionChanged" MouseDoubleClick="lb_files_MouseDoubleClick"/>
+                </GroupBox>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="tb_status" Foreground="Blue"/>
+                    <Button Name="but_open" Margin="5 5 5 0" Grid.Column="1" Width="70" Click="but_open_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="24" Height="16" Source="Icons/Open-26.png"/>
+                            <TextBlock>Open</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Name="but_selectAll" Margin="5 5 5 0" Grid.Column="2" Width="70" Click="but_selectAll_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="24" Height="16" Source="Icons/Select All-26.png"/>
+                            <TextBlock>Select</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Name="but_unselectAll" Margin="5 5 5 0" Grid.Column="3" Width="70" Click="but_unselectAll_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="16" Height="16" Source="Icons/Unchecked-26.png"/>
+                            <TextBlock>Unselect</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

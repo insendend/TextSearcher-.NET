@@ -1,0 +1,54 @@
+﻿<Window x:Class="hmTextSearcher.SearchStart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:hmTextSearcher"
+        mc:Ignorable="d"
+        Title="SearchStart" Height="350" Width="480" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <GroupBox Header="Type of search" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Name="cmb_searchType" Margin="0 0 20 0">
+                    <ComboBoxItem IsSelected="True">direct HDD</ComboBoxItem>
+                    <ComboBoxItem>from DataBase</ComboBoxItem>
+                </ComboBox>
+                <Button Name="but_start" Width="70" Grid.Column="1" Click="but_start_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="24" Height="16" Source="Icons/Play-26.png"/>
+                        <TextBlock>Start</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Name="gb_connection" Margin="5" Header="Connection" Grid.Row="1" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox  Name="cmb_connection" Margin="0 0 20 0" SelectionChanged="cmb_connection_SelectionChanged"/>
+                <Button Name="but_newConnection" Width="70" Grid.Column="1" Click="but_newConnection_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="16" Height="16" Source="Icons/Plus-26.png"/>
+                        <TextBlock>Add new</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Help info" Margin="5" Grid.Row="2">
+            <TextBlock Name="tb_help" TextWrapping="Wrap"/>
+
+        </GroupBox>
+    </Grid>
+</Window>
