@@ -26,7 +26,7 @@
 ![ScreenShot](https://raw.github.com/insendend/TextSearcher.NET/master/hmTextSearcher/Screenshots/scrn3.jpg)
 ---
 При выборе "поиска в БД" нужно также выбрать строку соединения с БД из списка или сформировать свою:
-![ScreenShot](https://raw.github.com/insendend/TextSearcher.NET/master/hmTextSearcher/Screenshots/scrn4.jpg)
+
 ![ScreenShot](https://raw.github.com/insendend/TextSearcher.NET/master/hmTextSearcher/Screenshots/scrn5.jpg)
 
 После выбора всех параметров поиска можно стартовать
