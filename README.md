@@ -9,8 +9,8 @@
 * LANG: C#/SQL, WPF
 
 ## Описание приложения
-Программа предоставляет возможность поиска текста на жестком диске напрямую или в БД, если этот поиск уже производился. 
-В настройки поиска включен учёт регистра и пропуск файлов с размером больше указанного.
+Программа предоставляет возможность поиска текста на жестком диске напрямую или в БД, 
+если этот поиск уже производился. В настройки поиска включен учёт регистра и пропуск файлов с размером больше указанного.
 Найденные файлы формируются в список, который отображается в главном окне программы. 
 Предоставляется возможность по выбору из списка открывать, копировать, перемещать или удалять файлы.
 
@@ -24,7 +24,7 @@
 ![ScreenShot](https://raw.github.com/insendend/TextSearcher.NET/master/hmTextSearcher/Screenshots/scrn2.jpg)
 ###### в БД
 ![ScreenShot](https://raw.github.com/insendend/TextSearcher.NET/master/hmTextSearcher/Screenshots/scrn3.jpg)
----
+
 При выборе "поиска в БД" нужно также выбрать строку соединения с БД из списка или сформировать свою:
 ![ScreenShot](https://raw.github.com/insendend/TextSearcher.NET/master/hmTextSearcher/Screenshots/scrn4.jpg)
 ![ScreenShot](https://raw.github.com/insendend/TextSearcher.NET/master/hmTextSearcher/Screenshots/scrn5.jpg)
